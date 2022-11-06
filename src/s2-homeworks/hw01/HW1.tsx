@@ -73,7 +73,7 @@ const HW1 = () => {
     const classes = useStyles();
     return (
         <Grid>
-            <Typography className={classes.title}>Homework #1</Typography>
+            <Typography className={classes.title}>Homework №1</Typography>
             <Grid id={'hw1'} className={classes.root} >
 
                 <Container maxWidth={'lg'}>
