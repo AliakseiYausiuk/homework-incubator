@@ -2,6 +2,7 @@ import React from 'react'
 import { AffairType } from '../../HW2'
 import s from './Affair.module.css'
 import s2 from '../Affairs.module.css'
+import Grid from '@material-ui/core/Grid';
 
 type AffairPropsType = {
     affair: AffairType
@@ -18,16 +19,16 @@ function Affair(props: AffairPropsType) {
     const affairClass = s.affair + ' ' + s2[props.affair.priority]
 
     return (
-        <div
+        <Grid
             id={'hw2-affair-' + props.affair._id}
             className={affairClass}
         >
-            <div id={'hw2-name-' + props.affair._id} className={nameClass}>
+            <Grid id={'hw2-name-' + props.affair._id} className={nameClass}>
                 {props.affair.name}
-            </div>
-            <div id={'hw2-priority-' + props.affair._id} hidden>
+            </Grid>
+            <Grid id={'hw2-priority-' + props.affair._id} hidden>
                 {props.affair.priority}
-            </div>
+            </Grid>
 
             <button
                 id={'hw2-button-delete-' + props.affair._id}
@@ -38,7 +39,7 @@ function Affair(props: AffairPropsType) {
                 X
                 {/**/}
             </button>
-        </div>
+        </Grid>
     )
 }
 
