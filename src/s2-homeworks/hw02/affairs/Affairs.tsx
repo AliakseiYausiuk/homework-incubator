@@ -2,6 +2,7 @@ import React from 'react'
 import Affair from './affair/Affair'
 import {AffairType, FilterType} from '../HW2'
 import s from './Affairs.module.css'
+import Grid from '@material-ui/core/Grid';
 
 type AffairsPropsType = {
     data: Array<AffairType> // need to fix any
@@ -38,8 +39,8 @@ function Affairs(props: AffairsPropsType) {
     ))
 
     return (
-        <div>
-            <div className={s.buttonContainer}>
+        <Grid>
+            <Grid className={s.buttonContainer}>
                 <button
                     id={'hw2-button-all'}
                     onClick={setAll}
@@ -68,9 +69,9 @@ function Affairs(props: AffairsPropsType) {
                 >
                     Low
                 </button>
-            </div>
-            <div className={s.affairs}>{mappedAffairs}</div>
-        </div>
+            </Grid>
+            <Grid className={s.affairs}>{mappedAffairs}</Grid>
+        </Grid>
     )
 }
 
