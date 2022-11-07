@@ -61,7 +61,8 @@ const useStyles = makeStyles({
         padding: '24px 0 32px 0'
     },
     title: {
-        margin: '107px 0 10px 70px',
+        padding: '107px 0 0 0',
+        margin: '0 0 10px 70px',
         fontWeight: 600,
         fontSize: '22px',
         lineHeight: '27px'
