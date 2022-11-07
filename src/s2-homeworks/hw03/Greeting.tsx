@@ -1,16 +1,34 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react'
+import React, {ChangeEvent, ChangeEventHandler, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import {makeStyles} from '@material-ui/core/styles';
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    onBlur: any // need to fix any
-    onEnter: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    name: string
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>) => void
+    addUser: () => void
+    onBlur: () => void
+    onEnter: (e: KeyboardEvent<HTMLInputElement>) => void
+    error: string
+    totalUsers: number
+    lastUserName?: any
 }
+
+const useStyles = makeStyles({
+    input: {
+        padding: '0px',
+        width: '372px',
+    },
+    btn: {
+        height: '40px',
+        background: '#0066CC',
+        margin: '0 0 0 12px'
+    }
+
+})
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
@@ -25,48 +43,53 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    // const inputClass = s.errorInput // need to fix with (?:)
+    const classes = useStyles();
 
     return (
-        <div id={'hw3-form'} className={s.greetingForm}>
-            <div className={s.text}>
+        <Grid id={'hw3-form'} className={s.greetingForm}>
+            <Typography className={s.text}>
                 {'Людей добавили: '}
                 <span id={'hw3-users-total'}>
                     {totalUsers}
                 </span>
-            </div>
+            </Typography>
 
-            <div className={s.inputAndButtonContainer}>
-                <div>
-                    <input
+            <Grid container>
+                <Grid>
+                    <TextField
+                        error={!!error}
                         id={'hw3-input'}
                         value={name}
                         onChange={setNameCallback}
-                        className={inputClass}
+                        className={classes.input}
                         onKeyDown={onEnter}
                         onBlur={onBlur}
+                        variant={'outlined'}
+                        size={'small'}
                     />
-                    <div id={'hw3-error'} className={s.error}>
+                    <Grid id={'hw3-error'} className={s.error}>
                         {error}
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
 
-                <button
+                <Button
                     id={'hw3-button'}
                     onClick={addUser}
-                    className={s.button}
+                    className={classes.btn}
                     disabled={!name.trim()}
+                    variant={'contained'}
                 >
                     add
-                </button>
-            </div>
+                </Button>
+            </Grid>
 
             {lastUserName && (
-                <div className={s.greeting}>
-                    Привет <span id={'hw3-last-user'}>{lastUserName}</span>!
-                </div>
+                <Grid className={s.greeting}>
+                    <Typography id={'hw3-last-user'}>Привет {lastUserName}!</Typography>
+                </Grid>
             )}
-        </div>
+        </Grid>
     )
 }
 
