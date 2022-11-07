@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
-import { v1 } from 'uuid'
+import React, {useState} from 'react'
+import {v1} from 'uuid'
 import s2 from '../../s1-main/App.module.css'
 import GreetingContainer from './GreetingContainer'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import {makeStyles} from '@material-ui/core/styles';
 
 /*
 * 1 - описать тип UserType
@@ -19,35 +23,53 @@ import GreetingContainer from './GreetingContainer'
 
 // types
 export type UserType = {
-    _id: any // need to fix any
-    name: any // need to fix any
+    _id: number
+    name: string
 }
 
-export const pureAddUserCallback = (name: any, setUsers: any, users: any) => { // need to fix any
-    const user = { // need to fix
+export const pureAddUserCallback = (name: string, setUsers: any, users: Array<UserType>) => { // need to fix any
+    const user = {
+        _id: 99,
+        name
     }
     setUsers([...users, user])
 }
+const useStyles = makeStyles({
+    root: {
+        borderTop: '1px solid #D9D9D9',
+        borderBottom: '1px solid #D9D9D9',
+        padding: '24px 0 32px 0'
+    },
+    title: {
+        margin: '39px 0 10px 70px',
+        fontWeight: 600,
+        fontSize: '22px',
+        lineHeight: '27px'
+    },
+
+})
+
 
 const HW3 = () => {
-    const [users, setUsers] = useState<any>([]) // need to fix any
+    const classes = useStyles();
+    const [users, setUsers] = useState<Array<UserType>>([])
 
-    const addUserCallback = (name: any) => { // need to fix any
+    const addUserCallback = (name: string) => {
         pureAddUserCallback(name, setUsers, users)
     }
 
     return (
-        <div id={'hw3'}>
-            <div className={s2.hwTitle}>Homework #3</div>
-            {/*для автоматической проверки дз (не менять)*/}
-
-            <div className={s2.hw}>
-                <GreetingContainer
-                    users={users}
-                    addUserCallback={addUserCallback}
-                />
-            </div>
-        </div>
+        <Grid id={'hw3'}>
+            <Typography className={classes.title}>Homework №3</Typography>
+            <Grid className={classes.root}>
+                <Container maxWidth={'lg'}>
+                    <GreetingContainer
+                        users={users}
+                        addUserCallback={addUserCallback}
+                    />
+                </Container>
+            </Grid>
+        </Grid>
     )
 }
 
