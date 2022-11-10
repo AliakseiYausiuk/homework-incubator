@@ -1,6 +1,9 @@
 import React from 'react'
 import s2 from '../../s1-main/App.module.css'
 import Stand from './Stand'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 /*
 * 1 - понять (и простить) SuperInputText
@@ -11,13 +14,15 @@ import Stand from './Stand'
 
 const HW4 = () => {
     return (
-        <div id={'hw4'}>
-            <div className={s2.hwTitle}>Homework #4</div>
+        <Grid id={'hw4'}>
+            <Typography className={s2.hwTitle}>Homework #4</Typography>
             {/*демонстрация возможностей компонент:*/}
-            <div className={s2.hw}>
+            <Grid className={s2.hw}>
+                <Container maxWidth={'lg'}>
                 <Stand />
-            </div>
-        </div>
+                </Container>
+            </Grid>
+        </Grid>
     )
 }
 
