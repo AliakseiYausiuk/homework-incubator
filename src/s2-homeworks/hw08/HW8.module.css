@@ -1,10 +1,13 @@
 .item {
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .item:last-of-type {
 }
 
 .users {
+    margin: 20px 0 0 0;
+    width: 606px;
 }
 
 .buttonsContainer {
@@ -14,10 +17,23 @@
 }
 
 .thead {
+
 }
 
 .nameCol {
+    height: 36px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .ageCol {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.root {
+    text-align: center;
+    background: #E5E5E5;
 }
