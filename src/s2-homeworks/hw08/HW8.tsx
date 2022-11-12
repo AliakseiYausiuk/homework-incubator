@@ -4,6 +4,10 @@ import s from './HW8.module.css'
 import s2 from '../../s1-main/App.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import User from './User'
+import {makeStyles} from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 /*
 * 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, проверить тестом
@@ -17,6 +21,12 @@ export type UserType = {
     age: number
 }
 
+export type InitialStateType = typeof initialPeople
+export type  actionsType = sortUpType | sortDownType | checkAdultHoodType
+export type sortUpType = { type: 'sort', payload: 'up' }
+export type sortDownType = { type: 'sort', payload: 'down' }
+export type checkAdultHoodType = { type: 'check', payload: number }
+
 const initialPeople: UserType[] = [
     // студенты могут поменять имя/возраст/количество объектов, _id должны быть целочисленные
     {_id: 0, name: 'Кот', age: 3},
@@ -26,6 +36,21 @@ const initialPeople: UserType[] = [
     {_id: 4, name: 'Дмитрий', age: 40},
     {_id: 5, name: 'Ирина', age: 55},
 ]
+
+const useStyles = makeStyles({
+    root: {
+        borderTop: '1px solid #D9D9D9',
+        borderBottom: '1px solid #D9D9D9',
+        padding: '24px 0 32px 0'
+    },
+    title: {
+        margin: '39px 0 10px 70px',
+        fontWeight: 600,
+        fontSize: '22px',
+        lineHeight: '27px'
+    },
+
+})
 
 const HW8 = () => {
     const [people, setPeople] = useState<UserType[]>(initialPeople)
@@ -52,13 +77,14 @@ const HW8 = () => {
         ) // совершеннолетние
         setCurrentSort('18')
     }
+    const classes = useStyles();
 
     return (
-        <div id={'hw3'}>
-            <div className={s2.hwTitle}>Homework #8</div>
-            <div className={s2.hw}>
-                <div className={s.container}>
-                    <div className={s.buttonsContainer}>
+        <Grid id={'hw3'}>
+            <Typography className={classes.title}>Homework №8</Typography>
+            <Grid className={classes.root}>
+                <Container maxWidth={'lg'}>
+                    <Grid className={s.buttonsContainer}>
                         <SuperButton
                             id={'hw8-button-up'}
                             onClick={sortUp}
@@ -80,21 +106,20 @@ const HW8 = () => {
                         >
                             Check 18+
                         </SuperButton>
-                    </div>
+                    </Grid>
 
                     <table id={'hw8-users'} className={s.users}>
                         <thead className={s.thead}>
-                        <tr>
+                        <tr className={s.root}>
                             <td className={s.nameCol}>Name</td>
                             <td className={s.ageCol}>Age</td>
                         </tr>
                         </thead>
-
                         <tbody>{finalPeople}</tbody>
                     </table>
-                </div>
-            </div>
-        </div>
+                </Container>
+            </Grid>
+        </Grid>
     )
 }
 
