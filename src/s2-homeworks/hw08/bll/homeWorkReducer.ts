@@ -1,20 +1,18 @@
-import {UserType} from '../HW8'
+import {actionsType, InitialStateType} from '../HW8';
 
-type ActionType =
-    | { type: 'sort'; payload: 'up' | 'down' }
-    | { type: 'check'; payload: number }
-
-export const homeWorkReducer = (state: any, action: any): any => { // need to fix any
+export const homeWorkReducer = (state: InitialStateType, action: actionsType): InitialStateType => {
     switch (action.type) {
-        case 'sort': { // by name
-
-            return state // need to fix
+        case 'sort': {
+            if (action.payload === 'up') {
+                return [...state].sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
+            } else if (action.payload === 'down') {
+                return [...state].sort((a, b) => b.name.toLowerCase() > a.name.toLowerCase() ? 1 : -1)
+            } else return state
         }
-        case 'check': {
-
-            return state // need to fix
-        }
+        case 'check':
+            return state.filter(p => p.age > action.payload)
         default:
             return state
+
     }
 }
