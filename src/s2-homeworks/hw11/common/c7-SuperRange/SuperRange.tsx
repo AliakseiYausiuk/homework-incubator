@@ -2,12 +2,6 @@ import React from 'react'
 import {Slider, SliderProps} from '@mui/material'
 
 const SuperRange: React.FC<SliderProps> = (props) => {
-    console.log(props.value);
-
-    // const handleChange = (event: any, newValue: number | number[]) => {
-    //     setValue(newValue as number[]);
-    // };
-    //
     return (
         <Slider
             valueLabelDisplay="auto"
