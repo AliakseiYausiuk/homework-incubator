@@ -4,6 +4,10 @@ import s2 from '../../s1-main/App.module.css'
 import SuperSelect from '../hw07/common/c5-SuperSelect/SuperSelect'
 import {useDispatch, useSelector} from 'react-redux'
 import {changeThemeId} from './bll/themeReducer'
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import {makeStyles} from '@material-ui/core/styles';
 
 /*
 * 1 - в файле themeReducer.ts написать нужные типы вместо any, дописать редьюсер
@@ -18,12 +22,31 @@ const themes = [
     {id: 3, value: 'dark'},
 ]
 
+const useStyles = makeStyles({
+    root: {
+        borderTop: '1px solid #D9D9D9',
+        borderBottom: '1px solid #D9D9D9',
+        padding: '24px 0 32px 0'
+    },
+    title: {
+        margin: '39px 0 10px 70px',
+        fontWeight: 600,
+        fontSize: '22px',
+        lineHeight: '27px'
+    },
+
+})
+
 const HW12 = () => {
+    const classes = useStyles();
     // взять ид темы из редакса
+    const state = useSelector<any>(state => state)
+    const dispatch = useDispatch();
     const themeId = 1
 
-    const change = (id: any) => { // дописать функцию
 
+    const change = (id: number) => {
+        dispatch(changeThemeId(id))
     }
 
     useEffect(() => {
@@ -31,20 +54,22 @@ const HW12 = () => {
     }, [themeId])
 
     return (
-        <div id={'hw12'}>
-            <div id={'hw12-text'} className={s2.hwTitle}>
+        <Grid id={'hw12'}>
+            <Typography id={'hw12-text'} className={classes.title}>
                 Homework #12
-            </div>
+            </Typography>
 
-            <div className={s2.hw}>
-                <SuperSelect
-                    id={'hw12-select-theme'}
-                    className={s.select}
-                    // сделать переключение тем
-
-                />
-            </div>
-        </div>
+            <Grid className={classes.root}>
+                <Container maxWidth={'lg'}>
+                    <SuperSelect
+                        id={'hw12-select-theme'}
+                        className={s.select}
+                        options={themes}
+                        onChangeOption={change}
+                    />
+                </Container>
+            </Grid>
+        </Grid>
     )
 }
 
