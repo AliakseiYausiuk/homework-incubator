@@ -5,6 +5,10 @@ import React, {
 } from 'react'
 import s from './SuperSelect.module.css'
 
+type OptionsType = {
+    id:number
+    value: string
+}
 
 type DefaultSelectPropsType = DetailedHTMLProps<
     SelectHTMLAttributes<HTMLSelectElement>,
@@ -12,7 +16,7 @@ type DefaultSelectPropsType = DetailedHTMLProps<
 >
 
 type SuperSelectPropsType = DefaultSelectPropsType & {
-    options?: any[]
+    options?: OptionsType[]
     onChangeOption?: (option: any) => void
 }
 
