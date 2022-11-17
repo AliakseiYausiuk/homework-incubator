@@ -3,11 +3,12 @@ import s from './HW12.module.css'
 import s2 from '../../s1-main/App.module.css'
 import SuperSelect from '../hw07/common/c5-SuperSelect/SuperSelect'
 import {useDispatch, useSelector} from 'react-redux'
-import {changeThemeId} from './bll/themeReducer'
+import {changeThemeId, StateType} from './bll/themeReducer'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import {makeStyles} from '@material-ui/core/styles';
+import {AppStoreType} from '../hw10/bll/store';
 
 /*
 * 1 - в файле themeReducer.ts написать нужные типы вместо any, дописать редьюсер
@@ -40,18 +41,19 @@ const useStyles = makeStyles({
 const HW12 = () => {
     const classes = useStyles();
     // взять ид темы из редакса
-    const state = useSelector<any>(state => state)
+    const state = useSelector<AppStoreType>(state => state.theme.themeId)
     const dispatch = useDispatch();
-    const themeId = 1
+    // const themeId = state
 
 
     const change = (id: number) => {
         dispatch(changeThemeId(id))
     }
 
+
     useEffect(() => {
-        document.documentElement.dataset.theme = themeId + ''
-    }, [themeId])
+        document.documentElement.dataset.theme = state + ''
+    }, [state])
 
     return (
         <Grid id={'hw12'}>
