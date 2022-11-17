@@ -16,8 +16,6 @@ import {makeStyles} from '@material-ui/core/styles';
 * */
 
 
-
-
 const arr = [
     {id: 1, value: 'x'},
     {id: 2, value: 'y'},
@@ -40,7 +38,7 @@ const useStyles = makeStyles({
 
 const HW7 = () => {
     const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
-const classes = useStyles();
+    const classes = useStyles();
     return (
         <Grid id={'hw7'}>
             <Typography className={classes.title}>Homework #7</Typography>
