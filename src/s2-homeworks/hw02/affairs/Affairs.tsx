@@ -5,7 +5,7 @@ import s from './Affairs.module.css'
 import Grid from '@material-ui/core/Grid';
 
 type AffairsPropsType = {
-    data: Array<AffairType> // need to fix any
+    data: Array<AffairType>
     setFilter: any
     deleteAffairCallback: (id: number) => void
     filter: FilterType
