@@ -39,7 +39,7 @@ const FriendMessage = (props: FriendMessageType) => {
             <Grid container>
                 <Grid>
                     <Avatar
-                        className={classes.avatar}
+                        className={s.friendImageAndText}
                         id={'hw1-friend-avatar-' + props.message.id}
                         src={props.message.user.avatar}
                         alt={'Avatar user'}

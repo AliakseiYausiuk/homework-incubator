@@ -42,7 +42,7 @@ const Message = (props: MessagePropsType) => {
                         alt="Name user"
                         id={'hw1-avatar-' + props.message.id}
                         src={props.message.user.avatar}
-                        className={classes.avatar}
+                        className={s.imageAndText}
                     />
                     <Typography id={'hw1-time-' + props.message.id} className={classes.time}>
                         {props.message.message.time}
