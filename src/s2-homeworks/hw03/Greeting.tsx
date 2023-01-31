@@ -57,20 +57,13 @@ const Greeting: React.FC<GreetingPropsType> = (
 
             <Grid container>
                 <Grid>
-                    <TextField
-                        error={!!error}
-
+                    <input
+                        id={'hw3-input'}
                         value={name}
                         onChange={setNameCallback}
-
+                        className={error ? s.errorInput : s.input}
                         onKeyDown={onEnter}
                         onBlur={onBlur}
-                        variant={'outlined'}
-                        size={'small'}
-                        inputProps={{
-                            id:'hw3-input',
-                            className:classes.input + ' ' + s.errorInput
-                        }}
                     />
                     <Grid id={'hw3-error'} className={s.error}>
                         {error}
