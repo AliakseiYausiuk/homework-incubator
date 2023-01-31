@@ -19,7 +19,7 @@ export const pureAddUser = (name: string, setError: (err: string) => void, setNa
 }
 
 export const pureOnBlur = (name: string, setError: (err: string) => void) => { // если имя пустое - показать ошибку
-    if (name.length >= 2) {
+    if (name.length > 1) {
         setError('');
     } else {
         setError('Error message');
@@ -58,7 +58,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     }
 
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (name.length === 0) {
+        if (name.length <= 1) {
             setError('Error message')
         } else {
             pureOnEnter(e, addUser)
