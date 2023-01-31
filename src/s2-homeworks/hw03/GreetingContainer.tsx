@@ -8,7 +8,7 @@ type GreetingContainerPropsType = {
 }
 
 export const pureAddUser = (name: string, setError: (err: string) => void, setName: (name: string) => void, addUserCallback: (name:string) => void) => {
-    if (name.trim().length === 1) {
+    if (name.trim().length <= 1) {
         setError('Error message');
     } else {
         addUserCallback(name)
@@ -46,7 +46,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value);
-        // error && setError('Error message')
+        error && setError('')
     }
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
