@@ -40,7 +40,11 @@ const Message = (props: MessagePropsType) => {
                 <Grid>
                     <Avatar
                         alt="Name user"
-                        id={'hw1-avatar-' + props.message.id}
+                        imgProps={
+                            {
+                                id: 'hw1-avatar-' + props.message.id,
+                            }
+                        }
                         src={props.message.user.avatar}
                         className={s.imageAndText}
                     />
