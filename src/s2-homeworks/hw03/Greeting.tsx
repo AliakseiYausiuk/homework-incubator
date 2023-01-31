@@ -45,7 +45,6 @@ const Greeting: React.FC<GreetingPropsType> = (
 ) => {
     // const inputClass = s.errorInput // need to fix with (?:)
     const classes = useStyles();
-
     return (
         <Grid id={'hw3-form'} className={s.greetingForm}>
             <Typography className={s.text}>
