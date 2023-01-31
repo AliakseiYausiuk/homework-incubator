@@ -85,7 +85,7 @@ const Greeting: React.FC<GreetingPropsType> = (
             </Grid>
 
             {lastUserName && (
-                <Grid className={s.greeting}>
+                <Grid className={s.greeting} key={name}>
                     <Typography id={'hw3-last-user'}>Привет {lastUserName}!</Typography>
                 </Grid>
             )}
