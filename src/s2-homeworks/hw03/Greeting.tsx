@@ -77,7 +77,7 @@ const Greeting: React.FC<GreetingPropsType> = (
                     id={'hw3-button'}
                     onClick={addUser}
                     className={classes.btn}
-                    disabled={!name.trim()}
+                    disabled={name.length <= 1}
                     variant={'contained'}
                 >
                     add
