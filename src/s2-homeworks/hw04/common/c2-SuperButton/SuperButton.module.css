@@ -20,6 +20,7 @@
 .secondary {
     background-color: #FFFFFF;
     color: #0066CC;
+    border: 1px solid #0066CC;
 }
 
 .default {
@@ -34,7 +35,7 @@
 .default:hover {
     background: #FFFFFF;
     color: #0066CC;
-    border: 1px solid #0066CC;
+
 }
 
 .red:hover {
