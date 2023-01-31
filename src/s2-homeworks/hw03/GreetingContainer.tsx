@@ -1,13 +1,13 @@
 import React, {ChangeEvent, ChangeEventHandler, KeyboardEvent, useState} from 'react'
 import Greeting from './Greeting'
-import {UserType} from './HW3'
+import { UserType } from './HW3'
 
 type GreetingContainerPropsType = {
     users: Array<UserType>
     addUserCallback: (name: string) => void
 }
 
-export const pureAddUser = (name: string, setError: (err: string) => void, setName: (name: string) => void, addUserCallback: (name: string) => void) => {
+export const pureAddUser = (name: string, setError: (err: string) => void, setName: (name: string) => void, addUserCallback: (name:string) => void) => {
     if (name.trim().length === 1) {
         setError('Error message');
     } else {
@@ -37,18 +37,16 @@ export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: () => v
 
 // более современный и удобный для про :)
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
-                                                                     users,
-                                                                     addUserCallback,
-                                                                 }) => {
+    users,
+    addUserCallback,
+}) => {
     // деструктуризация пропсов
     const [name, setName] = useState<string>('')
     const [error, setError] = useState<string>('')
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value);
-        if (error) {
-            setError('Error message')
-        }
+        // error && setError('Error message')
     }
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
