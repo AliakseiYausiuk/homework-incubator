@@ -83,10 +83,13 @@ function Clock() {
     const timeMinutes = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
     const timeSeconds = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds();
 
-    const stringTime = `${timeHours}:${timeMinutes}:${timeSeconds}` || <br/>
-    const stringDate = `${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}.${date.getMonth() + 1 > 9 ? date.getMonth() : '0' + date.getMonth()}.${date.getFullYear()}` ||
-        <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+    const month = date.getMonth() + 1
 
+    const stringTime = `${timeHours}:${timeMinutes}:${timeSeconds}` || <br/>
+    const stringDate = `${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}.${month > 9 ? month : '0' + month}.${date.getFullYear()}` ||
+        <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+    // console.log(stringDate)
+    console.log(stringDate )
     const stringDay = getDayWord(date.getDay()) || <br/>
     const stringMonth = getDayMonthWord(date.getMonth()) || <br/>
 
