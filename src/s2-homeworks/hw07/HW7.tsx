@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 })
 
 const HW7 = () => {
-    const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
+    const [value, onChangeOption] = useState(2) // селект и радио должны работать синхронно
     const classes = useStyles();
     return (
         <Grid id={'hw7'}>
