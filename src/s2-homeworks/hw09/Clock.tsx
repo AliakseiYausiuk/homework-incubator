@@ -89,7 +89,6 @@ function Clock() {
     const stringDate = `${date.getDate() > 9 ? date.getDate() : '0' + date.getDate()}.${month > 9 ? month : '0' + month}.${date.getFullYear()}` ||
         <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
     // console.log(stringDate)
-    console.log(stringDate )
     const stringDay = getDayWord(date.getDay()) || <br/>
     const stringMonth = getDayMonthWord(date.getMonth()) || <br/>
 
