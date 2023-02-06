@@ -14,12 +14,11 @@ import {makeStyles} from '@material-ui/core/styles';
 * */
 
 
-// const arr = [
-//     {id: 1, value: 'x'},
-//     {id: 2, value: 'y'},
-//     {id: 3, value: 'z'},
-// ]
-const arr = ['x', 'y', 'z']
+const arr = [
+    {id: 1, value: 'x'},
+    {id: 2, value: 'y'},
+    {id: 3, value: 'z'},
+]
 const useStyles = makeStyles({
     root: {
         borderTop: '1px solid #D9D9D9',
@@ -36,7 +35,7 @@ const useStyles = makeStyles({
 })
 
 const HW7 = () => {
-    const [value, onChangeOption] = useState(arr[1]) // селект и радио должны работать синхронно
+    const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
     const classes = useStyles();
     return (
         <Grid id={'hw7'}>
